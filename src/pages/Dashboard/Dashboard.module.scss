@@ -1,0 +1,57 @@
+$green-bg: rgb(106, 245, 67);
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(225, 228, 228);
+}
+.header {
+  background-color: black;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 1rem 4rem;
+  cursor: pointer;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  .urlForm {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 3rem 1rem;
+    font-size: 1.3rem;
+    background-color: rgb(251, 251, 251);
+    box-shadow: 0 0 20px gray;
+    border-radius: 10px;
+    margin-top: 2rem;
+  }
+  .formRow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-weight: bold;
+  }
+
+  .optText {
+    font-weight: 100;
+    font-size: 1rem;
+  }
+  @media screen and (max-width:1000px) {
+    .urlForm{
+      width: 60%;
+    }
+  }
+   @media screen and (max-width:700px) {
+    .urlForm{
+      width: 80%;
+    }
+  }
+  @media screen and (max-width:500px) {
+    .urlForm{
+      width: 90%;
+    }
+  }
+}

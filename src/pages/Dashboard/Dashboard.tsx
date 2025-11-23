@@ -5,6 +5,7 @@ import useCreateLink from "../../hooks/useCreateLinks";
 import { type ICreateLink } from "../../service/link/createLink";
 import { validateUrl } from "../../utils";
 import styles from "./Dashboard.module.scss";
+import LinkTable from "../../components/LinkTable/LinkTable";
 const Dashboard = () => {
   const navigate = useNavigate();
   const {  isLoading, createMutation } = useCreateLink();
@@ -97,6 +98,8 @@ const Dashboard = () => {
             {isLoading ? "Creating..." : "Create"}
           </button>
         </div>
+        <LinkTable />
+        
       </main>
     </div>
   );

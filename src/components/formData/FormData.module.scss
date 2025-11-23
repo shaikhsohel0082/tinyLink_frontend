@@ -1,0 +1,39 @@
+.urlForm {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 0 1rem 0.5rem 1rem;
+    font-size: 1.3rem;
+    background-color: rgb(251, 251, 251);
+    box-shadow: 0 0 20px gray;
+    border-radius: 10px;
+    margin-top: 2rem;
+  }
+  .formRow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-weight: bold;
+  }
+
+  .optText {
+    font-weight: 100;
+    font-size: 1rem;
+  }
+  @media screen and (max-width:1000px) {
+    .urlForm{
+      width: 60%;
+    }
+  }
+   @media screen and (max-width:700px) {
+    .urlForm{
+      width: 80%;
+    }
+  }
+  @media screen and (max-width:500px) {
+    .urlForm{
+      width: 90%;
+    }
+  }

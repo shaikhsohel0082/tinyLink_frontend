@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import styles from "./FormData.module.scss";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import useCreateLink from "../../hooks/useCreateLinks";
 import type { ICreateLink } from "../../service/link/createLink";
 import { validateUrl } from "../../utils";
-import useCreateLink from "../../hooks/useCreateLinks";
-import { toast } from "react-toastify";
+import styles from "./FormData.module.scss";
 const FormData = () => {
   const [formData, setFormData] = useState<ICreateLink>({ url: "", code: "" });
   const [error, setError] = useState<Array<string>>([]);

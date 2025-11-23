@@ -4,14 +4,17 @@ import useGetAllLinks from "../../hooks/useGetAllLinks";
 import Pagination from "../pagination/Pagination";
 import { useState } from "react";
 import styles from "./LinkTable.module.scss";
+import { useNavigate } from "react-router-dom";
+import Spinner from "../Spinner";
 const LinkTable = () => {
   const { links, currentPage, setCurrentPage, totalPages, isLoading, isError } =
     useGetAllLinks();
   const { deleteMutation, isDeleting } = useDeleteLink();
   const [urlsToBeDeleted, setUrlsToBeDeleted] = useState<Array<string>>([]);
+  const navigate = useNavigate();
   return (
-    <div className="d-flex flex-column w-100 align-items-center">
-      <table className="table mt-5 w-75">
+    <div className={`d-flex flex-column w-100 align-items-center`}>
+      <table className="table mt-5 w-75 table-hover">
         <thead className="table-dark">
           <tr>
             <th>Code</th>
@@ -19,25 +22,33 @@ const LinkTable = () => {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody className="w-100">
+        <tbody className={`${styles.tableBody}`}>
           {isLoading ? (
-            <div className="d-flex w-100 justify-content-center align-items-center text-primary display-1 ps-5">
-              Loading...
-            </div>
+          <div className="d-flex w-100 justify-content-end pt-lg-5 px-3 mb-lg-5">
+            <Spinner color="blue" background="transparent"/>
+          </div>
           ) : isError ? (
             <div className="d-flex w-100 justify-content-center align-items-center text-danger">
               {" "}
               Error Loading content!
             </div>
           ) : links?.length === 0 ? (
-            <div>No data found</div>
+            <div className={`${styles.noData}`}>No data found</div>
           ) : (
             links?.map((link) => (
-              <tr key={link.code}>
+              <tr
+                key={link.code}
+                onClick={() => {
+                  navigate(`/code/${link.code}`);
+                }}
+                className={styles.tableRow}
+              >
                 <td>{link.code}</td>
                 <td>{link.url}</td>
                 <td
-                  onClick={async () => {
+                  onClick={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     setUrlsToBeDeleted((prev) => [...prev, link.code]);
 
                     try {
@@ -64,12 +75,13 @@ const LinkTable = () => {
           )}
         </tbody>
       </table>
-
-      <Pagination
-        currentpage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      />
+      {totalPages > 1 && (
+        <Pagination
+          currentpage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
+      )}
     </div>
   );
 };

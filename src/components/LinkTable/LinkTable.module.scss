@@ -1,3 +1,16 @@
 .cursorPointer{
     cursor: pointer;
 }
+
+.noData{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    min-height: 5rem;
+    font-size: 2rem;
+}
+.tableRow {
+  cursor: pointer;
+ 
+}

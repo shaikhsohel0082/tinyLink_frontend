@@ -43,8 +43,8 @@ const LinkTable = () => {
                 }}
                 className={styles.tableRow}
               >
-                <td>{link.code}</td>
-                <td>{link.url}</td>
+                <td className="text-truncate">{link.code}</td>
+                 <td className="text-truncate">{link.url}</td>
                 <td
                   onClick={async (e) => {
                     e.preventDefault();

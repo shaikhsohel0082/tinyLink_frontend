@@ -24,20 +24,20 @@ const Stats = () => {
         <div className={`${styles.card}`}>
           <div className="w-100 d-flex justify-content-between align-items-center">
             <span className={styles.label}>Code :</span>
-            <span className="text-success">{data?.code}</span>
+            <span className="text-success w-75 text-truncate">{data?.code}</span>
           </div>
           <div className="w-100 d-flex justify-content-between align-items-center">
-            <span className={styles.label}>Url :</span>
-            <span className="text-success">{data?.url}</span>
+            <span className={`${styles.label} `}>Url :</span>
+            <span className="text-success w-75 text-truncate">{data?.url}</span>
           </div>
           <div className="w-100 d-flex justify-content-between align-items-center">
             <span className={styles.label}>Total Clicks :</span>
-            <span className="text-success">{data?.clicks}</span>
+            <span className="text-success w-75 text-truncate">{data?.clicks}</span>
           </div>
           <div className="w-100 d-flex justify-content-between align-items-center">
             <span className={styles.label}>Last Clicked Date:</span>
             {data?.lastClicked ? (
-              <span className="text-success">
+              <span className="text-success w-75 text-truncate">
                 <span className="me-3">
                   {new Date(data?.lastClicked + "").toLocaleDateString()}
                 </span>

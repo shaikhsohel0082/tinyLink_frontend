@@ -6,22 +6,28 @@ import { useEffect, useState } from "react";
 import Spinner from "../../components/Spinner";
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [isServerStarted, setIsServerStarted] = useState(false);
+  const [isServerStarted, setIsServerStarted] = useState(() => {
+    const flag = localStorage.getItem("serverStarted");
+    if (flag === "true") {
+      return true;
+    } else {
+      return false;
+    }
+  });
   const serverUrl = import.meta.env.VITE_REDIRECT;
   // start server if it is not started
   useEffect(() => {
-    if (!isServerStarted) {
-      const startServer = async () => {
-        try {
-          await fetch(serverUrl);
-          setIsServerStarted(true);
-        } catch (err) {
-          console.error(err);
-        }
-      };
+    const startServer = async () => {
+      try {
+        await fetch(serverUrl);
+        setIsServerStarted(true);
+        localStorage.setItem("serverStarted", "true");
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
-      startServer();
-    }
+    startServer();
   }, []);
 
   return (

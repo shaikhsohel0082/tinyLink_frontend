@@ -7,7 +7,7 @@ import Spinner from "../../components/Spinner";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [isServerStarted, setIsServerStarted] = useState(() => {
-    const flag = localStorage.getItem("serverStarted");
+    const flag = sessionStorage.getItem("serverStarted");
     if (flag === "true") {
       return true;
     } else {
@@ -21,7 +21,7 @@ const Dashboard = () => {
       try {
         await fetch(serverUrl);
         setIsServerStarted(true);
-        localStorage.setItem("serverStarted", "true");
+        sessionStorage.setItem("serverStarted", "true");
       } catch (err) {
         console.error(err);
       }
